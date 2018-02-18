@@ -1,0 +1,16 @@
+.sing-in{
+    width: 750px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+
+.field-form, .lbl-form, .btn, .link{
+    display: block;
+    width: 100%;
+    font-size: 1.3em;
+}

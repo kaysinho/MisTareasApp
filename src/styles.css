@@ -1,1 +1,134 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+}
+
+/*Color principal de textos*/
+.color-principal{
+    background: #ad1457;
+}
+
+/*Color secundario de textos*/
+.color-secundario{
+    background: #d81b60;
+}
+
+a{
+    color: #d81b60;
+    font-size: 20px;
+
+}
+
+/*Botones de color fuerte en los formularios*/
+.btn{
+    color: white;
+    background: #ad1457;
+    padding: 15px 20px;
+    cursor: pointer;
+    border: none;
+    font-family: 'Ubuntu';
+    text-transform: capitalize;
+}
+
+/*Header donde se encuentra el menu*/
+header{
+    width: 100%;
+    height: 70px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/*Caja responsive*/
+.contenedor{
+    width: 98%;
+    margin: auto;
+}
+
+/*Titulos*/
+h1{
+    float: left;
+}
+
+/**/
+.title_form{
+    font-size: 29px;
+    padding: 50px;
+    text-align: center;
+    margin-top: 0;
+}
+
+
+.field-form{
+    padding: 20px;
+    border: 1px solid rgba(244, 143, 177, 1);
+    margin-bottom: 40px;
+    background: transparent;
+    color: #424242;
+    font-family: 'Ubuntu';
+    z-index: 20;
+}
+
+.field-form:focus{
+    outline: 1px solid rgba(240, 98, 146, 1);
+}
+
+.field-form:focus + .lbl-form{
+    margin-top: -135px;
+}
+
+
+.lbl-form{
+    padding-left: 15px;
+    position: absolute;
+    margin-top: -85px;
+    z-index: -20;
+    transition: all 0.3s;
+    color:  #424242 ;
+}
+
+.link{
+    padding-left: 0px;
+    margin-top: 0px;
+    padding: 15px;
+}
+
+.large{
+    font-size: 40px;
+}
+
+.medium{
+    font-size: 25px;
+}
+
+.small{
+    font-size: 18px;
+}
+
+.message-error{
+    color: red;
+    padding: 15px;
+}
+
+.message-success{
+    color: green;
+    padding: 15px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.lowerCase{
+    text-transform: lowercase;
+}

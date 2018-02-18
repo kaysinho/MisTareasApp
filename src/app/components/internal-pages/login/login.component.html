@@ -1,0 +1,12 @@
+<form class="login">
+  <h1 class="title_form">Iniciar Sesión</h1>
+  
+  <input type="text" [(ngModel)]="userLogin.email" name="email" class="field-form">
+  <label class="lbl-form">Correo electronico</label>
+  <input type="password" [(ngModel)]="userLogin.password" name="password" class="field-form">
+  <label class="lbl-form">Contraseña</label>
+  <p class="message-error small">{{validation.text}}</p>
+  <input type="submit" class="btn" (click)="login()" value="entrar">
+  
+  <a class="link" href="#/singin" >Registrarse</a>
+</form>
