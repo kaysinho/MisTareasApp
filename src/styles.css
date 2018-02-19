@@ -13,24 +13,22 @@ body{
 
 /*Color principal de textos*/
 .color-principal{
-    background: #ad1457;
+    background: #205081;
 }
 
 /*Color secundario de textos*/
 .color-secundario{
-    background: #d81b60;
+    background: #205081;
 }
 
 a{
-    color: #d81b60;
-    font-size: 20px;
-
+    color: #205081;
 }
 
 /*Botones de color fuerte en los formularios*/
 .btn{
     color: white;
-    background: #ad1457;
+    background: #205081;
     padding: 15px 20px;
     cursor: pointer;
     border: none;
@@ -69,50 +67,23 @@ h1{
 }
 
 
-.field-form{
-    padding: 20px;
-    border: 1px solid rgba(244, 143, 177, 1);
-    margin-bottom: 40px;
-    background: transparent;
-    color: #424242;
-    font-family: 'Ubuntu';
-    z-index: 20;
-}
-
-.field-form:focus{
-    outline: 1px solid rgba(240, 98, 146, 1);
-}
-
-.field-form:focus + .lbl-form{
-    margin-top: -135px;
-}
-
-
-.lbl-form{
-    padding-left: 15px;
-    position: absolute;
-    margin-top: -85px;
-    z-index: -20;
-    transition: all 0.3s;
-    color:  #424242 ;
-}
-
 .link{
-    padding-left: 0px;
+    float: center;
     margin-top: 0px;
     padding: 15px;
+    position: relative;
 }
 
 .large{
-    font-size: 40px;
-}
-
-.medium{
     font-size: 25px;
 }
 
+.medium{
+    font-size: 20px;
+}
+
 .small{
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .message-error{
@@ -132,3 +103,61 @@ h1{
 .lowerCase{
     text-transform: lowercase;
 }
+
+.field-form, .btn {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Ubuntu';
+}
+
+.lbl-form {
+    width: 100%;
+    padding: 0 5px;
+    margin-top: 5px;
+    margin-bottom: -2px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-112
+ {width: 100%;}
+
+
+@media (min-width:1024px){
+    .col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 5px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+}
+
+
+
+

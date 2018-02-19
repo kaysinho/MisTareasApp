@@ -1,0 +1,41 @@
+<app-header></app-header>
+<form class="task-form row" (ngSubmit)="sendRegister()">
+  <div class="col-12">
+    <h1 class="title_form">Nueva Tarea</h1>
+  </div>
+
+  <div class="col-6">
+    <label class="lbl-form">Nombre</label>
+    <input type="text" maxlength="100" [(ngModel)]="task.name" name="name" class="field-form capitalize" required>
+  </div>
+
+  <div class="col-6">
+    <label class="lbl-form">Descripción</label>
+    <input type="text" maxlength="100" [(ngModel)]="task.description" name="description" class="field-form" required>
+  </div>
+
+  <div class="col-6">
+    <label class="lbl-form">Responsables</label>
+    <select [(ngModel)]="task.responsibles" name="responsibles" class="field-form lowerCase" required>
+        <option>Jhonatan Plata</option>
+        <option>Pedro Perez</option>
+        <option>Alvaro Mendoza</option>
+        <option>Ruth Martinez</option>
+       </select>
+
+  </div>
+
+  <div class="col-6">
+    <label class="lbl-form">Fecha de finalización</label>
+    <input type="text" maxlength="16" [(ngModel)]="task.deadline_completion" name="deadline_completion" class="field-form" required>
+  </div>
+  <div class="col-9">
+      <p class="message-error small">{{validation.text}}</p>
+      <p class="message-success small">{{message_success}}</p>
+  </div>
+  <div class="col-3">
+    <input type="submit" class="btn" value="Guardar">
+    
+  </div>
+
+</form>

@@ -1,5 +1,5 @@
 .sing-in{
-    width: 750px;
+    width: 450px;
     max-width: 100%;
     margin: auto;
     margin-top: 100px;
@@ -9,8 +9,18 @@
 }
 
 
-.field-form, .lbl-form, .btn, .link{
-    display: block;
-    width: 100%;
-    font-size: 1.3em;
+header label{
+    float: right;
+    margin: 15px 0;
+    cursor: pointer;
 }
+
+header h1{
+    margin: 15px 0;
+}
+
+
+header .contenedor{
+    display: table;
+}
+

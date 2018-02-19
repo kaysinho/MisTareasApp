@@ -1,12 +1,16 @@
 <header class="color-principal">
   <div class="contenedor">
-    <h1><i class="medium material-icons">assignment</i>Mis Tareas</h1>
+    <h1>
+      <i class="medium material-icons">assignment</i>Mis Tareas</h1>
     <input type="checkbox" id="menu_bar" />
-    <label for="menu_bar"><i class="large material-icons">menu</i></label>
+    <label for="menu_bar">
+      <i class="large material-icons">menu</i>
+    </label>
     <nav class="color-secundario menu">
-      <a href="#">Tareas Pendientes</a>
-      <a href="#">Tareas Finalizadas</a>
-      <a href="#">Cerrar Sesión</a>
+      <a [routerLink]="['/tasks', id]" routerLinkActive="active" >Nueva Tarea</a>
+      <a [routerLink]="['/panding-tasks', id]" routerLinkActive="active" >Tareas Pendientes</a>
+      <a [routerLink]="['/finish-tasks', id]" routerLinkActive="active" >Tareas Finalizadas</a>
+      <a class="logout">Cerrar Sesión</a>
     </nav>
   </div>
 </header>

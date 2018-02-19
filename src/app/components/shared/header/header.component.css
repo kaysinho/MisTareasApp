@@ -6,6 +6,10 @@ header label{
     cursor: pointer;
 }
 
+header input{
+    display: none;
+}
+
 header h1{
     margin: 15px 0;
 }
@@ -34,10 +38,39 @@ header .contenedor{
     font-size: 20px;
 }
 
+.active{
+    background: #003d66;
+}
+
+.logout{
+    color: #ccebff !important;
+}
+
 .menu a:hover{
     background: rgba(255,255,255,0.5);
 }
 
 #menu_bar:checked ~ .menu{
     transform: translateX(0);
+}
+
+@media (min-width:1024px){
+    .menu{
+        position: static;
+        width: auto;
+        height: auto;
+        transform: translateX(0%);
+        float: right;
+        display: flex;
+    }
+
+    header label, header input{
+        display: none;
+    }
+
+    header div nav a{
+        font-size: 17px;
+    }
+
+
 }

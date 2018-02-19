@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/user';
 import { Message } from '../../../models/message';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent {
     text:''
   };
   users: User[];
-  constructor(public userService:UserService) { 
+  constructor(public userService:UserService, private router: Router) { 
   
   }
 
@@ -30,6 +31,7 @@ export class LoginComponent {
   ngOnInit() {
     this.userService.getUsers().subscribe(users =>{
       this.users = users;
+      console.log(users)
     })
   }
 
@@ -65,16 +67,18 @@ export class LoginComponent {
     this.validation = this.validateRegister();
     if (this.validation.type==true){
         let loginOk:boolean=false;
+        let user_id:string='';
         for (var i=0; i<this.users.length; i++){
           if (this.users[i].email == this.userLogin.email &&
             this.users[i].password == this.userLogin.password ){
               loginOk=true;
+              user_id=this.users[i].id;
           }
         }
         if (loginOk){
-          console.log("Bienvenido al Sistema!");
+          this.router.navigate(['/panding-tasks', user_id]);
         }else{
-          console.log("No existe!");
+          this.validation.text="Datos errados!.. Si no se ha registrado puede hacerlo en el link Registrarse";
         }
     }
   }

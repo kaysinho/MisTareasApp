@@ -1,18 +1,30 @@
+<header class="color-principal">
+  <div class="contenedor">
+    <h1><i class="medium material-icons">assignment</i>Mis Tareas</h1>
+  </div>
+</header>
+
 <form class="sing-in" (ngSubmit)="sendRegister()">
   <h1 class="title_form">Regístro</h1>
-  <input type="text" maxlength="100" [(ngModel)]="user.name" name="name" class="field-form capitalize" required>
+
   <label class="lbl-form">Nombres</label>
-  <input type="text"  maxlength="100" [(ngModel)]="user.lastName" name="lastName" class="field-form capitalize" required>
+  <input type="text" maxlength="100" [(ngModel)]="user.name" name="name" class="field-form capitalize" required>
+  
   <label class="lbl-form">Apellidos</label>
-  <input type="text"  maxlength="100" [(ngModel)]="user.email" name="email" class="field-form lowerCase" required>
+  <input type="text"  maxlength="100" [(ngModel)]="user.lastName" name="lastName" class="field-form capitalize" required>
+  
   <label class="lbl-form">Correo electronico</label>
-  <input type="password" maxlength="16" [(ngModel)]="user.password" name="password" class="field-form" required>
+  <input type="text"  maxlength="100" [(ngModel)]="user.email" name="email" class="field-form lowerCase" required>
+  
   <label class="lbl-form">Contraseña</label>
-  <input type="password"  maxlength="16" [(ngModel)]="password_two" name="password_two" class="field-form" required>
+  <input type="password" maxlength="16" [(ngModel)]="user.password" name="password" class="field-form" required>
+  
   <label class="lbl-form">Repita su contraseña</label>
+  <input type="password"  maxlength="16" [(ngModel)]="password_two" name="password_two" class="field-form" required>
+  
   <p class="message-error small">{{validation.text}}</p>
   <input type="submit" class="btn"  value="registrarme">
   <p class="message-success small">{{message_success}}</p>
-  <a class="link" href="#/login">Iniciar Sesión</a>
+  <a class="link" href="/login">Iniciar Sesión</a>
   
 </form>
