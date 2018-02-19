@@ -13,15 +13,20 @@ export class ListFinishTasksComponent implements OnInit {
   allTasks: Task[];
   constructor(private activadedRoute:ActivatedRoute, private taskService:TaskService) { 
     this.ngOnInit()
+    this.getTasks()
   }
 
   ngOnInit() {
     this.activadedRoute.params.subscribe(params =>{
       this.id = params["id"]
     })
+    
+  }
 
+  getTasks(){
     this.taskService.getTasks().subscribe(tasks =>{
       this.allTasks = tasks;
+      console.log(this.id);
     })
   }
 

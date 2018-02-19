@@ -12,12 +12,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of allTasks | pendings:true ">
+      <tr *ngFor="let task of allTasks | pendings:true | tasksByUser:id">
         <td data-label="Nombre">{{task.name}}</td>
         <td data-label="Descripcion">{{task.description}}</td>
         <td data-label="Responsables">{{task.responsibles}}</td>
-        <td data-label="Cierre Hasta">{{task.deadline_completion}}</td>
-        <td data-label="Acciones"><input type="button" class="btn" value="Finalizar"></td>
+        <td data-label="Cierre Hasta">{{task.deadline_completion | date:'dd/MM/yyyy'}}</td>
+        <td data-label="Acciones"><input type="button" class="btn" (click)="updatePending(task)" value="Finalizar"></td>
       </tr>
     </tbody>
   </table>

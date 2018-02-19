@@ -26,7 +26,7 @@ import { SingInComponent } from './components/internal-pages/sing-in/sing-in.com
 import { ListPendingTasksComponent } from './components/internal-pages/list-pending-tasks/list-pending-tasks.component';
 import { ListFinishTasksComponent } from './components/internal-pages/list-finish-tasks/list-finish-tasks.component';
 import { TasksComponent } from './components/internal-pages/tasks/tasks.component';
-
+import { TasksByUserPipe } from './pipes/tasks-by-user.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { TasksComponent } from './components/internal-pages/tasks/tasks.componen
     ListPendingTasksComponent,
     ListFinishTasksComponent,
     TasksComponent,
-    PendingsPipe
+    PendingsPipe,
+    TasksByUserPipe
   ],
   imports: [
     BrowserModule,
