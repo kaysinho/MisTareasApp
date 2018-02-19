@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from '../../../models/task'
 import { TaskService } from '../../../services/task.service'
+
+
 
 @Component({
   selector: 'app-list-finish-tasks',
@@ -11,23 +13,35 @@ import { TaskService } from '../../../services/task.service'
 export class ListFinishTasksComponent implements OnInit {
   id: string = "";
   allTasks: Task[];
-  constructor(private activadedRoute:ActivatedRoute, private taskService:TaskService) { 
+
+  constructor(private activadedRoute: ActivatedRoute
+    , private taskService: TaskService
+    , private router: Router ) {
     this.ngOnInit()
-    this.getTasks()
+
   }
 
   ngOnInit() {
-    this.activadedRoute.params.subscribe(params =>{
+
+    this.activadedRoute.params.subscribe(params => {
       this.id = params["id"]
+      console.log(this.id)
+      this.getTasks()
     })
-    
+
   }
 
-  getTasks(){
-    this.taskService.getTasks().subscribe(tasks =>{
+
+  public getTasks() {
+    this.taskService.getTasks().subscribe(tasks => {
       this.allTasks = tasks;
-      console.log(this.id);
+      console.log('Se cargan los datos');
     })
+  }
+
+  finishTask(task: Task) {
+    task.state = false;
+    this.taskService.deleteTask(task);
   }
 
 }

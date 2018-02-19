@@ -14,6 +14,7 @@ import { app_routing } from './app.routes'
 //Services
 import { UserService } from './services/user.service'
 import { TaskService } from './services/task.service';
+import { RouterModule, Routes } from '@angular/router';
 
 //Pipes
 import { PendingsPipe } from './pipes/pendings.pipe';
@@ -46,8 +47,7 @@ import { TasksByUserPipe } from './pipes/tasks-by-user.pipe';
     app_routing,
     AngularFireModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase, 'mistareas'),
-    HttpModule
+    AngularFireModule.initializeApp(environment.firebase, 'mistareas')
   ],
   providers: [
     UserService,

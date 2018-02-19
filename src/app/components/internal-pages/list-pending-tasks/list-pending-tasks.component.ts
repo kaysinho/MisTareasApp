@@ -13,12 +13,13 @@ export class ListPendingTasksComponent implements OnInit {
   allTasks: Task[];
   constructor(private activadedRoute:ActivatedRoute, private taskService:TaskService) { 
     this.ngOnInit()
-    this.getTasks()
+    
   }
 
   ngOnInit() {
     this.activadedRoute.params.subscribe(params =>{
       this.id = params["id"]
+      this.getTasks();
     })
 
    

@@ -17,7 +17,7 @@
         <td data-label="Descripcion">{{task.description}}</td>
         <td data-label="Responsables">{{task.responsibles}}</td>
         <td data-label="Cierre Hasta">{{task.deadline_completion | date:'dd/MM/yyyy'}}</td>
-        <td data-label="Acciones"><input type="button" class="btn" value="Eliminar"></td>
+        <td data-label="Acciones"><input type="button" class="btn" (click)="finishTask(task)" value="Eliminar"></td>
       </tr>
     </tbody>
   </table>
