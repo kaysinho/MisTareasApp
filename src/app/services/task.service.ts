@@ -31,6 +31,10 @@ export class TaskService {
     return this.tasks; 
   }
 
+  getTask(task:Task){
+    return this.tasksCollection.ref.where("id", "==", task.id);
+  }
+
   addTask(task: Task) {
     this.tasksCollection.add(task);
   }

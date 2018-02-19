@@ -44,7 +44,7 @@ export class UserService {
     this.userDoc.delete();
   }
 
-  updateTask(user: User) {
+  updateUser(user: User) {
     this.userDoc = this.afs.doc(`users/${user.id}`);
     this.userDoc.update(user);
   }

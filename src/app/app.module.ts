@@ -1,11 +1,13 @@
 
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment'
 import { HttpModule } from '@angular/http';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 //Routes
@@ -28,6 +30,9 @@ import { ListPendingTasksComponent } from './components/internal-pages/list-pend
 import { ListFinishTasksComponent } from './components/internal-pages/list-finish-tasks/list-finish-tasks.component';
 import { TasksComponent } from './components/internal-pages/tasks/tasks.component';
 import { TasksByUserPipe } from './pipes/tasks-by-user.pipe';
+import { FilterTasksPipe } from './pipes/filter-tasks.pipe';
+import { TaskUpdateComponent } from './components/internal-pages/task-update/task-update.component';
+import { PasswordUpdateComponent } from './components/internal-pages/password-update/password-update.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,10 @@ import { TasksByUserPipe } from './pipes/tasks-by-user.pipe';
     ListFinishTasksComponent,
     TasksComponent,
     PendingsPipe,
-    TasksByUserPipe
+    TasksByUserPipe,
+    FilterTasksPipe,
+    TaskUpdateComponent,
+    PasswordUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,9 @@ import { TasksByUserPipe } from './pipes/tasks-by-user.pipe';
     app_routing,
     AngularFireModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase, 'mistareas')
+    AngularFireModule.initializeApp(environment.firebase, 'mistareas'),
+    CommonModule,
+    NgDatepickerModule
   ],
   providers: [
     UserService,

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Task } from '../../../models/task'
 import { TaskService } from '../../../services/task.service'
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -10,13 +11,22 @@ import { TaskService } from '../../../services/task.service'
   templateUrl: './list-finish-tasks.component.html',
   styleUrls: ['./list-finish-tasks.component.css']
 })
-export class ListFinishTasksComponent implements OnInit {
+export class ListFinishTasksComponent implements OnInit, OnDestroy {
   id: string = "";
   allTasks: Task[];
-
+  limit:number[] = [0,9];
+  task: Task = {
+    id: '',
+    name: '',
+    description: '',
+    deadline_completion: new Date(),
+    state: true,
+    responsibles: [],
+    user_id: ''
+  };
   constructor(private activadedRoute: ActivatedRoute
     , private taskService: TaskService
-    , private router: Router ) {
+    , private router: Router, private zone:NgZone) {
     this.ngOnInit()
 
   }
@@ -24,25 +34,29 @@ export class ListFinishTasksComponent implements OnInit {
   ngOnInit() {
 
     this.id = sessionStorage.getItem("session");
-    if (this.id==null){
-      this.router.navigate(['/login']);
+    if (this.id == null) {
+      location.reload();
     }
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) { 
-        console.log("Termina navegacion")
+
+      this.zone.run(() => {
         this.getTasks()
-      }
-    });
-
-    
-
+      });
+  }
+  
+  seeMore(){
+    this.limit[1] = this.limit[1] + 5
   }
 
+  ngOnDestroy(){
+    this.allTasks = null;
+  }
 
   public getTasks() {
-    this.taskService.getTasks().subscribe(tasks => {
-      this.allTasks = tasks;
-    })
+    return new Promise((resolve, reject) => {
+      this.taskService.getTasks().subscribe(tasks =>{
+        this.allTasks = tasks;
+      })
+    });
   }
 
   finishTask(task: Task) {

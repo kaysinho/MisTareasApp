@@ -1,5 +1,14 @@
 
 <div class="contenedor list-task">
+    <div class="row">
+        <div class="col-6">
+            <input type="text" class="field-form" name="name" [(ngModel)]="task.name"  placeholder="buscar por Nombre">
+        </div>
+        <div class="col-6">
+            <input type="text" class="field-form" name="description" [(ngModel)]="task.description" placeholder="buscar por Descripción">
+        </div>
+       
+    </div>
   <table>
     <caption>Tareas Finalizadas</caption>
     <thead>
@@ -12,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let task of allTasks | pendings:false | tasksByUser:id">
+        <tr *ngFor="let task of allTasks | pendings:false | tasksByUser:id | slice:limit[0]:limit[1] |filterTasks:task">
         <td data-label="Nombre">{{task.name}}</td>
         <td data-label="Descripcion">{{task.description}}</td>
         <td data-label="Responsables">{{task.responsibles}}</td>
@@ -21,4 +30,10 @@
       </tr>
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-8"></div>
+    <div class="col-4">
+      <input type="button" class="btn" (click)="seeMore()" value="ver más"/>
+    </div>
+  </div>
 </div>

@@ -7,11 +7,11 @@ import { DatepickerOptions } from 'ng2-datepicker';
 import * as frLocale from 'date-fns/locale/fr';
 
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  selector: 'app-task-update',
+  templateUrl: './task-update.component.html',
+  styleUrls: ['./task-update.component.css']
 })
-export class TasksComponent implements OnInit {
+export class TaskUpdateComponent implements OnInit {
   options: DatepickerOptions = {
     minYear: 2018,
     maxYear: 2020,
@@ -24,8 +24,9 @@ export class TasksComponent implements OnInit {
     maxDate: new Date(Date.now()),  // Maximal selectable date
     barTitleIfEmpty: 'Click to select a date'
   };
-
+  id_task:string =''
   id: string = "";
+  tasks: Task[];
   task: Task = {
     id: '',
     name: '',
@@ -43,16 +44,26 @@ export class TasksComponent implements OnInit {
 
   message_success: string = '';
   constructor(private activadedRoute: ActivatedRoute, private router:Router,
-    private taskService: TaskService) { 
-
-    }
+    private taskService: TaskService) { }
 
   ngOnInit() {
-    
     this.task.user_id = sessionStorage.getItem("session");
+    this.activadedRoute.params.subscribe(params =>{
+      this.id_task = params["idtask"]
+      this.getTask(this.id_task)
+    })
+
     if (this.task.user_id==null){
       location.reload();
     }
+  }
+
+  getTask(idtask:string){
+    this.taskService.getTasks().subscribe(tasks =>{
+      this.tasks = tasks;
+      this.tasks =   this.tasks.filter(item => item.id == idtask);
+      this.task = this.tasks[0];
+    })
   }
 
   validateRegister(): Message {
@@ -77,12 +88,15 @@ export class TasksComponent implements OnInit {
     validate.type = true;
     return validate;
   }
-  sendRegister() {
+  updateRegister() {
     this.validation = this.validateRegister();
     if (this.validation.type == true) {
-        this.taskService.addTask(this.task);
+        this.taskService.updateTask(this.task);
         this.cleanForm();
-        this.message_success ="Se ha creado la tarea con estado pendiente";
+        this.message_success ="Se ha actualizado la tarea";
+        setTimeout(() => {
+          window.location.href='/pending-tasks'
+        }, 2000);
     }
 
     

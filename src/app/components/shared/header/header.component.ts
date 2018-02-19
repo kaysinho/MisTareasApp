@@ -20,14 +20,23 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    this.router.events.subscribe(() => {
+      this.id = sessionStorage.getItem("session");
+  });
   }
+  getActive(value:string) {
+    if (String(window.location.href).indexOf(value) >= 0){
+      return "active";
+    }
 
+  }
 
   logout(){
-    sessionStorage.clear();
-    this.router.navigate(['/login']);
+    sessionStorage.clear();    
     this.id = null;
+    location.reload();
+
   }
+
 
 }
