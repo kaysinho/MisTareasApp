@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Task } from '../../../models/task'
 import { TaskService } from '../../../services/task.service'
 
@@ -23,11 +23,18 @@ export class ListFinishTasksComponent implements OnInit {
 
   ngOnInit() {
 
-    this.activadedRoute.params.subscribe(params => {
-      this.id = params["id"]
-      console.log(this.id)
-      this.getTasks()
-    })
+    this.id = sessionStorage.getItem("session");
+    if (this.id==null){
+      this.router.navigate(['/login']);
+    }
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) { 
+        console.log("Termina navegacion")
+        this.getTasks()
+      }
+    });
+
+    
 
   }
 
@@ -35,7 +42,6 @@ export class ListFinishTasksComponent implements OnInit {
   public getTasks() {
     this.taskService.getTasks().subscribe(tasks => {
       this.allTasks = tasks;
-      console.log('Se cargan los datos');
     })
   }
 

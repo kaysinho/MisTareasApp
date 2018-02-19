@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  id: string = "";
   userLogin: User = {
     id: '',
     name: '',
@@ -24,14 +25,16 @@ export class LoginComponent {
   };
   users: User[];
   constructor(public userService:UserService, private router: Router) { 
-  
+    this.id = sessionStorage.getItem("session");
+    if (this.id!=null){
+      this.router.navigate(['/panding-tasks']);
+    }
   }
 
 
   ngOnInit() {
     this.userService.getUsers().subscribe(users =>{
       this.users = users;
-      console.log(users)
     })
   }
 
@@ -75,8 +78,9 @@ export class LoginComponent {
               user_id=this.users[i].id;
           }
         }
-        if (loginOk){
-          this.router.navigate(['/panding-tasks', user_id]);
+        if (loginOk){ 
+          sessionStorage.setItem('session', user_id);
+          this.router.navigate(['/panding-tasks']);
         }else{
           this.validation.text="Datos errados!.. Si no se ha registrado puede hacerlo en el link Registrarse";
         }

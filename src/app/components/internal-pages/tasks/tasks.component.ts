@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from '../../../models/task'
 import { TaskService } from '../../../services/task.service'
 import { Message } from '../../../models/message'
-import * as moment from 'moment';
 
 
 @Component({
@@ -30,14 +29,17 @@ export class TasksComponent implements OnInit {
   };
 
   message_success: string = '';
-  constructor(private activadedRoute: ActivatedRoute,
-    private taskService: TaskService) { }
+  constructor(private activadedRoute: ActivatedRoute, private router:Router,
+    private taskService: TaskService) { 
+
+    }
 
   ngOnInit() {
-    this.activadedRoute.params.subscribe(params => {
-      this.id = params["id"]
-      this.task.user_id = params["id"];
-    })
+    console.log("sessionid: " + this.id)
+    this.id = sessionStorage.getItem("session");
+    if (this.id==null){
+      this.router.navigate(['/login']);
+    }
   }
 
   validateRegister(): Message {

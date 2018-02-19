@@ -10,9 +10,9 @@ import { TasksComponent } from './components/internal-pages/tasks/tasks.componen
 const app_routes:Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'singin', component: SingInComponent },
-    { path:'panding-tasks/:id', component: ListPendingTasksComponent },
-    { path:'finish-tasks/:id', component: ListFinishTasksComponent },
-    { path:'tasks/:id', component: TasksComponent },
+    { path:'panding-tasks', component: ListPendingTasksComponent },
+    { path:'finish-tasks', component: ListFinishTasksComponent },
+    { path:'tasks', component: TasksComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ]
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
+
 
 @Component({
   selector: 'app-header',
@@ -7,13 +9,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  id: string = "";
-  constructor(private activadedRoute:ActivatedRoute) { }
+  public id: string = "";
+  constructor(private activadedRoute:ActivatedRoute, private router:Router) {
+
+    this.id = sessionStorage.getItem("session");
+    if (this.id==null){
+      this.router.navigate(['/login']);
+    }
+
+   }
 
   ngOnInit() {
-    this.activadedRoute.params.subscribe(params =>{
-      this.id = params["id"]
-    })
+    
+  }
+
+
+  logout(){
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+    this.id = null;
   }
 
 }

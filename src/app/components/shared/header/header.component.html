@@ -2,15 +2,15 @@
   <div class="contenedor">
     <h1>
       <i class="medium material-icons">assignment</i>Mis Tareas</h1>
-    <input type="checkbox" id="menu_bar" />
-    <label for="menu_bar">
+    <input type="checkbox" id="menu_bar" *ngIf="id!=null" />
+    <label for="menu_bar" *ngIf="id!=null">
       <i class="large material-icons">menu</i>
     </label>
-    <nav class="color-secundario menu">
-      <a [routerLink]="['/tasks', id]" routerLinkActive="active" >Nueva Tarea</a>
-      <a [routerLink]="['/panding-tasks', id]" routerLinkActive="active" >Tareas Pendientes</a>
-      <a [routerLink]="['/finish-tasks', id]" routerLinkActive="active" >Tareas Finalizadas</a>
-      <a class="logout">Cerrar Sesión</a>
+    <nav class="color-secundario menu" *ngIf="id!=null">
+      <a routerLink="/tasks" routerLinkActive="active" >Nueva Tarea</a>
+      <a routerLink="/panding-tasks" routerLinkActive="active" >Tareas Pendientes</a>
+      <a routerLink="/finish-tasks" routerLinkActive="active" >Tareas Finalizadas</a>
+      <a (click)="logout()" class="logout">Cerrar Sesión</a>
     </nav>
   </div>
 </header>
