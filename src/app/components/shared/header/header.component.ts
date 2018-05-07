@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor(private activadedRoute:ActivatedRoute, private router:Router) {
 
     this.id = sessionStorage.getItem("session");
-    if (this.id==null){
+    if (this.id==null && String(location.href).indexOf('singin')==-1){
       this.router.navigate(['/login']);
     }
 
